@@ -3,29 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+
+        .block {
+            position: fixed;
+            background: #2184cd;
+            color: #fff;
+            z-index: 999;
+        }
+        .square {
+            width: 600px;
+            height: 400px;
+            background-color: red;
+        }
+        .div{
+            width: 650px;
+            height: 450px;
+        }
+
+        .rotateToRight {
+            -webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+        }
+        .rotateToLeft {
+            -webkit-transform: rotate(270deg);
+            -moz-transform: rotate(270deg);
+            -o-transform: rotate(270deg);
+            -ms-transform: rotate(270deg);
+            transform: rotate(270deg);
+        }
+        .rotateReverse{
+            -webkit-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script language="javascript" type="text/javascript">
 
         function addpresufx() {
-            var prfx = '<img src="';
-            var sufx = '" alt="Picture Not Available, Download Manually" width="600" height="400">';
+            var prfx = '<div><img class="square" ';
+            var prfx2= 'src="';
+            var sufx = '" alt="Picture Not Available, Download Manually" width="600" height="400"> ';
             var text = document.getElementById('input').value;
             var belong2 = 'pbclevtug grkgzrpunavp.pbz';
             text = text.replace(/\r/g, '');
             text = text.split(/\n/);
             var textlen = text.length;
             var textarrout = new Array();
-            for (var x = 0; x < textlen; x++) {
-                textarrout[x] = prfx + text[x] + sufx;
+            for (var x = 0 ; x < textlen; x++) {
+                textarrout[x] = prfx + 'id='+x+'" '+prfx2+ text[x] + sufx + " </div>";
+             //   textarrout[x] = prfx + 'id='+x+'" '+prfx2+ text[x] + sufx +" " + '<div> <button onclick="rotateImg('+'0'+')">right</button>'+'<button onclick="rotateImg('+x+')">left</button>'+'<button onclick="rotateImg('+x+')">180</button>'+ '</div> </div>';
+
             }
             textout = textarrout.join('\n');
-            document.write(textout);
+            var h1 = document.createElement('h1');
+            h1.innerHTML = textout;
+            document.body.appendChild(h1);
         }
+
+        function rotateImg(){
+            $('.square').removeClass('rotateToLeft');
+            $('.square').toggleClass('rotateToRight');
+        }
+
+        function rotateImgLeft(){
+            $('.square').removeClass('rotateToRight');
+            $('.square').toggleClass('rotateToLeft');
+        }
+
+        function rotateReverse(){
+            $('.square').removeClass('rotateToLeft');
+            $('.square').removeClass('rotateToRight');
+            $('.square').toggleClass('rotateReverse');
+        }
+        function reset(){
+            $('.square').removeClass('rotateToLeft');
+            $('.square').removeClass('rotateToRight');
+            $('.square').removeClass('rotateReverse');
+
+
+        }
+
+
     </script>
 </head>
 <body>
 <h1>Careem Project</h1>
+<<<<<<< Updated upstream
 <textarea id="input" style="width:100%; margin:7px 0px 4px 0px;" rows="4" wrap="off" class="flipthis-highlight"> </textarea>
+=======
+<textarea id="input" style="width:100%; margin:7px 0px 4px 0px;" rows="4" wrap="off" class="flipthis-highlight"></textarea>
+<div>
+>>>>>>> Stashed changes
 <input type="button" name="submit1" value="Submit" onclick="addpresufx()" />
+</div>
+
+
+<button class="block" onclick="rotateImg()">right</button>
+<br>
+<button class="block" onClick="rotateImgLeft()">Left</button>
+<br>
+<button class="block" onclick="rotateReverse()">180 </button>
+<br>
+
+
 
 
 
