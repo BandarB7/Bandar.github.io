@@ -6,10 +6,24 @@
     <style>
 
         .block {
-            position: fixed;
-            background: #2184cd;
-            color: #fff;
             z-index: 999;
+            width:50px;
+            height:50px;
+            background-color: darkblue;
+            color:#FFF;
+            border-radius:50px;
+            text-align: center;
+            box-shadow: 2px 2px 3px #999;
+        }
+
+        .buttons{
+            position: fixed;
+            background-color:transparent ;
+            position: fixed;
+            width: 100px;
+            height: 300px;
+            color: red;
+
         }
         .square {
             width: 600px;
@@ -102,15 +116,20 @@
 <input type="button" name="submit1" value="Submit" onclick="addpresufx()" />
 </div>
 
-
+<div class="buttons">
+    <div>
 <button class="block" onclick="rotateImg()">right</button>
-<br>
+    </div>
+    <div>
 <button class="block" onClick="rotateImgLeft()">Left</button>
-<br>
+    </div>
+    <div>
 <button class="block" onclick="rotateReverse()">180 </button>
-<br>
+    </div>
+    <div>
 <button class="block" onclick="reset()">reset </button>
-
+    </div>
+</div>
 
 
 
