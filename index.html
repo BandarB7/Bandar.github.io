@@ -16,9 +16,9 @@
             height: 400px;
             background-color: red;
         }
-        .div{
-            width: 650px;
-            height: 450px;
+        .divBox{
+            width: 600px;
+            height: 600px;
         }
 
         .rotateToRight {
@@ -48,7 +48,7 @@
     <script language="javascript" type="text/javascript">
 
         function addpresufx() {
-            var prfx = '<div><img class="square" ';
+            var prfx = '<div class="divBox" ><img class="square" ';
             var prfx2= 'src="';
             var sufx = '" alt="Picture Not Available, Download Manually" width="600" height="400"> ';
             var text = document.getElementById('input').value;
@@ -109,6 +109,7 @@
 <br>
 <button class="block" onclick="rotateReverse()">180 </button>
 <br>
+<button class="block" onclick="reset()">reset </button>
 
 
 
