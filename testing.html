@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body spellcheck="false" style="zoom: 1;">
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//textmechanic.com/";
+        _paq.push(["setTrackerUrl", u+"tmtrack.php"]);
+        _paq.push(["setSiteId", "20"]);
+        var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0];
+        g.type="text/javascript"; g.async=true; g.defer=true; g.src=u+"tmtrack.php"; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<div id="menu"></div>
+<div id="bodypadding" style="margin-top:0px !important;">
+    <h1> Tool: Add Prefix and/or Suffix into Each Line</h1>
+    <textarea id="input" style="width:100%; margin:7px 0px 4px 0px;" rows="4" wrap="off" class="">Input Box
+Enter text for prefix and/or suffix insertion here.</textarea>
+    Add this <b>prefix</b> into the beginning of each line:
+    <input type="text" id="prefix" value="" placeholder="Enter prefix here." style="width:100%;" class="">
+    Add this <b>suffix</b> into the end of each line:
+    <input type="text" id="suffix" value="" placeholder="Enter suffix here." style="width:100%;" class="">
+    <div style="padding:4px 0px 7px 0px;">
+        <input type="button" value="Add Prefix and/or Suffix" onclick="addpresufx();" class="">
+        <input type="button" title="Select All Text" value="S" onclick="SelectAll('output')">
+        <input type="button" title="Clear All Text" value="C" onclick="cleartext();">
+    </div>
+
+</body>
+</html>

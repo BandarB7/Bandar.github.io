@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script language="javascript" type="text/javascript">
+
+        function addpresufx() {
+            var prfx = '<img src="';
+            var sufx = '" alt="Picture Not Available, Download Manually" width="600" height="400">';
+            var text = document.getElementById('input').value;
+            var belong2 = 'pbclevtug grkgzrpunavp.pbz';
+            text = text.replace(/\r/g, '');
+            text = text.split(/\n/);
+            var textlen = text.length;
+            var textarrout = new Array();
+            for (var x = 0; x < textlen; x++) {
+                textarrout[x] = prfx + text[x] + sufx;
+            }
+            textout = textarrout.join('\n');
+            document.write(textout);
+        }
+    </script>
+</head>
+<body>
+<h1>Careem Project</h1>
+<textarea id="input" style="width:100%; margin:7px 0px 4px 0px;" rows="4" wrap="off" class="flipthis-highlight">Input Box
+Enter text for prefix and/or suffix insertion here.</textarea>
+<input type="button" name="submit1" value="Submit" onclick="addpresufx()" />
+
+
+
+</body>
+</html>
