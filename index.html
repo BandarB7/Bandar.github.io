@@ -83,11 +83,13 @@
         }
         
         function rotateImgRight(){
+            $('.square').removeClass('rotateReverse');
             $('.square').removeClass('rotateToLeft');
             $('.square').toggleClass('rotateToRight');
         }
 
         function rotateImgLeft(){
+            $('.square').removeClass('rotateReverse');
             $('.square').removeClass('rotateToRight');
             $('.square').toggleClass('rotateToLeft');
         }
