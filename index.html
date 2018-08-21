@@ -5,8 +5,7 @@
     <title>Title</title>
     <style>
 
-        .block {
-            z-index: 999;
+        .btn {
             width:50px;
             height:50px;
             background-color: darkblue;
@@ -16,23 +15,28 @@
             box-shadow: 2px 2px 3px #999;
         }
 
-        .buttons{
+        .buttons {
             position: fixed;
             background-color:transparent ;
             position: fixed;
             width: 100px;
             height: 300px;
             color: red;
+            z-index: 1;
 
         }
+
         .square {
+            display: block;
             width: 600px;
             height: 400px;
+            margin-bottom: 100px;
+            margin-top: 100px;
             background-color: red;
         }
-        .divBox{
-            width: 600px;
-            height: 600px;
+
+        .imgsDiv {
+            font-size: 14px;
         }
 
         .rotateToRight {
@@ -61,28 +65,24 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script language="javascript" type="text/javascript">
 
-        function addpresufx() {
-            var prfx = '<div class="divBox" ><img class="square" ';
-            var prfx2= 'src="';
-            var sufx = '" alt="Picture Not Available, Download Manually" width="600" height="400"> ';
-            var text = document.getElementById('input').value;
-            var belong2 = 'pbclevtug grkgzrpunavp.pbz';
-            text = text.replace(/\r/g, '');
-            text = text.split(/\n/);
-            var textlen = text.length;
-            var textarrout = new Array();
-            for (var x = 0 ; x < textlen; x++) {
-                textarrout[x] = prfx + 'id='+x+'" '+prfx2+ text[x] + sufx + " </div>";
-             //   textarrout[x] = prfx + 'id='+x+'" '+prfx2+ text[x] + sufx +" " + '<div> <button onclick="rotateImg('+'0'+')">right</button>'+'<button onclick="rotateImg('+x+')">left</button>'+'<button onclick="rotateImg('+x+')">180</button>'+ '</div> </div>';
-
-            }
-            textout = textarrout.join('\n');
-            var h1 = document.createElement('h1');
-            h1.innerHTML = textout;
-            document.body.appendChild(h1);
+        function addImgs() {
+            let links = document.getElementById('input').value;
+            links = links.replace(/\r/g, '').split(/\n/);
+            let imgs = links.map((link) => `<div class="square" target="_blank">
+                                                <a href="${link}">
+                                                    <img src="${link}"
+                                                         width="600"
+                                                         height="400"
+                                                         alt="Picture Not Available, Click here to download">
+                                                </a>
+                                            </div>`.trim()).join();
+            let div = document.createElement('div');
+            div.innerHTML = imgs;
+            div.className = "imgsDiv";
+            document.body.appendChild(div);
         }
-
-        function rotateImg(){
+        
+        function rotateImgRight(){
             $('.square').removeClass('rotateToLeft');
             $('.square').toggleClass('rotateToRight');
         }
@@ -97,12 +97,11 @@
             $('.square').removeClass('rotateToRight');
             $('.square').toggleClass('rotateReverse');
         }
+
         function reset(){
             $('.square').removeClass('rotateToLeft');
             $('.square').removeClass('rotateToRight');
             $('.square').removeClass('rotateReverse');
-
-
         }
 
 
@@ -113,21 +112,21 @@
     <p> Paste pictures links to start </p>
 <textarea id="input" style="width:100%; margin:7px 0px 4px 0px;" rows="4" wrap="off" class="flipthis-highlight"> </textarea>
 <div>
-<input type="button" name="submit1" value="Submit" onclick="addpresufx()" />
+<input type="button" name="submit1" value="Submit" onclick="addImgs()" />
 </div>
 
 <div class="buttons">
     <div>
-<button class="block" onclick="rotateImg()">right</button>
+<button class="btn" onclick="rotateImgRight()">right</button>
     </div>
     <div>
-<button class="block" onClick="rotateImgLeft()">Left</button>
+<button class="btn" onClick="rotateImgLeft()">Left</button>
     </div>
     <div>
-<button class="block" onclick="rotateReverse()">180 </button>
+<button class="btn" onclick="rotateReverse()">180 </button>
     </div>
     <div>
-<button class="block" onclick="reset()">reset </button>
+<button class="btn" onclick="reset()">reset </button>
     </div>
 </div>
 
