@@ -69,7 +69,7 @@
 
         function addImgs() {
             let links = document.getElementById('input').value;
-            links = links.replace(/\r/g, '').split(/\n/);
+            links = links.trim().replace(/\r/g, '').split(/\n/);
             let imgs = links.map((link) => `<div class="square" target="_blank">
                                                 <a href="${link}">
                                                     <img src="${link}"
