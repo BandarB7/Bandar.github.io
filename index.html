@@ -39,21 +39,15 @@
             font-size: 14px;
         }
 
-        .rotateToRight {
+        .rotate90 {
             -webkit-transform: rotate(90deg);
             -moz-transform: rotate(90deg);
             -o-transform: rotate(90deg);
             -ms-transform: rotate(90deg);
             transform: rotate(90deg);
         }
-        .rotateToLeft {
-            -webkit-transform: rotate(270deg);
-            -moz-transform: rotate(270deg);
-            -o-transform: rotate(270deg);
-            -ms-transform: rotate(270deg);
-            transform: rotate(270deg);
-        }
-        .rotateReverse{
+
+        .rotate180{
             -webkit-transform: rotate(180deg);
             -moz-transform: rotate(180deg);
             -o-transform: rotate(180deg);
@@ -61,9 +55,17 @@
             transform: rotate(180deg);
         }
 
+        .rotate270 {
+            -webkit-transform: rotate(270deg);
+            -moz-transform: rotate(270deg);
+            -o-transform: rotate(270deg);
+            -ms-transform: rotate(270deg);
+            transform: rotate(270deg);
+        }
+
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script language="javascript" type="text/javascript">
+        rotate_degree = 0;
 
         function addImgs() {
             let links = document.getElementById('input').value;
@@ -75,35 +77,39 @@
                                                          height="400"
                                                          alt="Picture Not Available, Click here to download">
                                                 </a>
-                                            </div>`.trim()).join();
+                                            </div>`.trim()).join('');
             let div = document.createElement('div');
             div.innerHTML = imgs;
             div.className = "imgsDiv";
             document.body.appendChild(div);
         }
+
+        function rotate(degree) {
+            let squares = document.getElementsByClassName('square');
+            for(let i = 0; i < squares.length; i++) {
+                squares[i].className = 'square';
+                squares[i].classList.add('rotate'+degree);
+            }
+        }
         
         function rotateImgRight(){
-            $('.square').removeClass('rotateReverse');
-            $('.square').removeClass('rotateToLeft');
-            $('.square').toggleClass('rotateToRight');
+            rotate_degree = (rotate_degree + 90) % 360;
+            rotate(rotate_degree);
         }
 
         function rotateImgLeft(){
-            $('.square').removeClass('rotateReverse');
-            $('.square').removeClass('rotateToRight');
-            $('.square').toggleClass('rotateToLeft');
+            rotate_degree = (((rotate_degree - 90) % 360)+360)%360;
+            rotate(rotate_degree);
         }
 
         function rotateReverse(){
-            $('.square').removeClass('rotateToLeft');
-            $('.square').removeClass('rotateToRight');
-            $('.square').toggleClass('rotateReverse');
+            rotate_degree = (rotate_degree + 180) % 360;
+            rotate(rotate_degree);
         }
 
         function reset(){
-            $('.square').removeClass('rotateToLeft');
-            $('.square').removeClass('rotateToRight');
-            $('.square').removeClass('rotateReverse');
+            rotate_degree = 0;
+            rotate(rotate_degree);
         }
 
 
